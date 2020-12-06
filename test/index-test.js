@@ -3,7 +3,7 @@ const fs = require('fs')
 const jsdom = require('jsdom')
 const path = require('path')
 
-console.error("its an error")
+
 describe('index', () => {
   const html = '<div></div>'
   const src = path.resolve(__dirname, '..', 'index.js')
@@ -11,6 +11,7 @@ describe('index', () => {
 
   it('calls console.error()', done => {
     const spy = expect.spyOn(console, 'error').andCallThrough()
+    console.error("its an error")
 
     jsdom.env(html, [src], {
       virtualConsole: jsdom.createVirtualConsole().sendTo(console)
